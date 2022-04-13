@@ -156,7 +156,7 @@ MEDFORD places all metadata into a single MEDFORD file. This MEDFORD file can be
         \item Any line that consists of only white space is ignored.
         \item Any line that begins with \# is ignored.
         \item A line that begins with @ is parsed as a metadata line.
-        \item A line with a leading character that is neither \# or @ are considered extensions to the metadata being described in the previous line.
+        \item A line with a leading character that is neither \#, @ or `@ are considered extensions to the metadata being described in the previous line.
         
         \item The series of symbols [..] is reserved as a template marker. Upon encountering an instance of this series of symbols, the medford parser shall flag it as an unfinished template and request the user to fill it out; a file containing this token is a MEDFORD template but not a valid MEDFORD file.
         \item The symbol \$\$ is reserved as a flag for \LaTeX math mode, and the medford parser will ensure that they are opened and closed correctly, but nothing between the \$\$ tags is validated. The enclosed sequence of characters is passed through unmodified.
@@ -237,6 +237,12 @@ An example of this template token is below:
     This describes the tags that are considered pre-defined in the current version of MEDFORD (v. \version)
     Pre-defined tags may also have pre-defined minor tags, which are called 'expected' tags. These may or may not be \textit{required}, only that the MEDFORD parser is aware of their existence and may be able to validate them. For instance, even if a \texttt{Date} minor tag is not required, it can till be validated for formatting. Minor tags which are not pre-defined are still allowed.
     Note that some tags are required only by certain target formats, such as BCO-DMO, and may only be validated when compiling to such a format.
+    
+    \paragraph{@Comment}
+    
+    This defines an arbitrary text field that the author found helpful to write in the MEDFORD file alongside the metadata. These are entirely free-form, are not validated, and will not be propagated to other metadata file types.
+    
+    There are currently no expected minor tokens for a \texttt{@Comment} major token.
     
     \paragraph{@Contributor}
     
@@ -377,8 +383,8 @@ An example of this template token is below:
 Any tags \emph{not} pre-defined by MEDFORD are simply passed through by the medford parser, and not subject to any validation. We refer to these as \emph{user-defined tags}. Should a user wish to implement custom validation for a user-defined tag, they would need to extend the medford parser (essentially, a language extension). This will be documented in a future version of MEDFORD.
 
 \section{Further Reading}{
-    The official source for the medford parser is on GitHub at \an{... (link here)}.
-    Additionally, there is a repository of example MEDFORD files on GitHub at \url{https://github.com/TuftsBCB/medford-examples/}
+    The official source for the medford parser is on GitHub at \url{https://github.com/TuftsBCB/medford}.
+    Additionally, there is a repository of example MEDFORD files on GitHub at \url{https://github.com/TuftsBCB/MEDFORD-examples/}
 }
 
 \section{Acknowledgements}{LC and PS thank the NSF for support under grant OAC-1939263. We thank Hollie Putnam, Jane Greenberg, Jack Freeman, Jay-Miguel Fonticella, and the entire Tufts BCB group for helpful feedback.}
