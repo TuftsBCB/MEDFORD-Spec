@@ -58,6 +58,7 @@
 
 \usepackage{xcolor}
 \newcommand{\an}[1]{{\color{red} \em #1}}
+
 \begin{document}
 
 \begin{multicols}{2}
@@ -115,6 +116,7 @@
 	A statement may begin with a tag describing a \texttt{minor tag} which further expands the metadata being described. See section~\ref{terminology} for more detail.
 	
 	Lines beginning with \texttt{\#} are treated as comments.
+	Comments are not validated and will not be propagated to other metadata file types.
 	
 	A MEDFORD file may include macro definitions and template placeholders as discussed in sections~\ref{macros}~and~\ref{templates}.
 	
@@ -237,12 +239,6 @@ An example of this template token is below:
     This describes the tags that are considered pre-defined in the current version of MEDFORD (v. \version)
     Pre-defined tags may also have pre-defined minor tags, which are called 'expected' tags. These may or may not be \textit{required}, only that the MEDFORD parser is aware of their existence and may be able to validate them. For instance, even if a \texttt{Date} minor tag is not required, it can till be validated for formatting. Minor tags which are not pre-defined are still allowed.
     Note that some tags are required only by certain target formats, such as BCO-DMO, and may only be validated when compiling to such a format.
-    
-    \paragraph{@Comment}
-    
-    This defines an arbitrary text field that the author found helpful to write in the MEDFORD file alongside the metadata. These are entirely free-form, are not validated, and will not be propagated to other metadata file types.
-    
-    There are currently no expected minor tokens for a \texttt{@Comment} major token.
     
     \paragraph{@Contributor}
     
